@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<f:view xmlns="http://java.sun.com/jsf/core"
+        xmlns:f="http://java.sun.com/jsf/core"
+        xmlns:h="http://java.sun.com/jsf/html"
+        xmlns:ui="http://java.sun.com/jsf/facelets"
+        xmlns:ds="http://deltaspike.apache.org/jsf"
+        xmlns:ice="http://java.sun.com/jsf/composite/components" xmlns:c="http://java.sun.com/jsp/jstl/core"
+        xmlns:p="http://primefaces.org/ui">
+
+    <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en" class="no-js">
+    <!--#{facesContext.viewRoot.viewId}-->
+    <h:head>
+        <f:facet name="first">
+            <title>
+                <ui:insert name="title">The University of Cambridge: ICE</ui:insert>
+            </title>
+
+            <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+            <meta http-equiv="X-UA-Compatible" content="IE=Edge"/>
+
+            <meta name="description" content="The University of Cambridge: ICE"/>
+            <meta name="author" content=""/>
+            <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+
+
+        </f:facet>
+
+        <link rel="shortcut icon" type="image/x-icon" href="#{resource['images/favicon.ico']}"/>
+        <link rel="apple-touch-icon" href="#{resource['images/apple-touch-icon.png']}"/>
+
+        <f:facet name="last">
+            <h:outputScript library="primefaces" name="jquery/jquery.js"/>
+            <h:outputScript name="js/lib.min.js"/>
+            <h:outputScript name="js/modernizr.min.js"/>
+            <h:outputScript name="js/campl.min.js"/>
+            <h:outputText escape="false" value="&lt;!--[if lte IE 9]&gt;" />
+            <link rel="stylesheet" href="#{resource['css/campl_legacy.min.css']}" />
+            <h:outputText escape="false" value="&lt;![endif]--&gt;" />
+
+            <h:outputText escape="false" value="&lt;!--[if gte IE 10]&gt;;&lt;!--&gt;" />
+            <link rel="stylesheet" href="#{resource['css/campl.min.css']}" />
+            <h:outputText escape="false" value="&lt;!--&lt;![endif]--&gt;" />
+
+            <script type="text/javascript" src="https://use.typekit.com/hyb5bko.js"></script>
+            <script type="text/javascript">try {
+                Typekit.load();
+            } catch (e) {
+            }</script>
+
+        </f:facet>
+
+    </h:head>
+    <h:body styleClass="theme-turquoise offcanvas offcanvas-left">
+        <ds:windowId/>
+
+        <header>
+
+            <ui:insert name="header-global">
+                <ui:include src="/templates/header-global.xhtml"/>
+            </ui:insert>
+
+            <ui:insert name="header-local">
+                <ui:include src="/templates/header-local.xhtml"/>
+            </ui:insert>
+
+            <ui:insert name="horizontal-navigation" />
+
+            <ui:insert name="header-subtitle">
+                <ui:include src="/templates/header-subtitle.xhtml"/>
+            </ui:insert>
+
+
+        </header>
+
+        <main class="container">
+            <div class="row">
+                <c:if test="#{hasSideMenu}">
+                    <ui:insert name="sidemenu" id="sidemenu" />
+                </c:if>
+                <div class="col-md-#{12 - (hasSidebar ? 3 : 0) - (hasSideMenu ? 3 : 0)}
+col-xs-12 main-content">
+                    <div class="p-a-1">
+                        <p:messages id="messages" showDetail="true" autoUpdate="true" closable="true" globalOnly="true" />
+                        <h:form id="iceForm">
+                            <ui:insert name="content" id="content"/>
+                        </h:form>
+                    </div>
+                </div>
+                <ui:insert name="sidebar" id="sidebar" />
+            </div>
+        </main>
+
+        <footer>
+            <ui:insert name="footer-local">
+                <ui:include src="/templates/footer-local.xhtml"/>
+            </ui:insert>
+
+            <ui:insert name="footer-global">
+                <ui:include src="/templates/footer-global.xhtml"/>
+            </ui:insert>
+        </footer>
+    </h:body>
+    </html>
+</f:view>

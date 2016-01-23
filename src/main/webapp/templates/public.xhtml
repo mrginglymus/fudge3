@@ -1,0 +1,19 @@
+<ui:composition template="/templates/layout.xhtml" xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:ice="http://java.sun.com/jsf/composite/components">
+
+    <ui:define name="horizontal-navigation">
+        <div class="local-header">
+            <nav class="navbar navbar-local container hidden-sm-down">
+                <div>
+                    <ul class="nav navbar-nav nav-local">
+                        <ice:horizontalNavLink label="Home" navigateTo="pretty:public-home" />
+                    </ul>
+                </div>
+            </nav>
+        </div>
+    </ui:define>
+
+</ui:composition>
