@@ -5,18 +5,14 @@
  */
 package works.bill.entities;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.ManyToOne;
+import javax.persistence.*;
 
 /**
  *
  * @author bill
  */
 @Entity
-public class Thing {
+public class Thing implements OwnedThing {
     
     @Id
     @GeneratedValue(strategy=GenerationType.AUTO)
@@ -46,5 +42,10 @@ public class Thing {
     public void setOwner(User owner) {
         this.owner = owner;
     }
-    
+
+    @Override
+    public boolean validOwner(User user) {
+        return user.equals(owner);
+    }
+
 }

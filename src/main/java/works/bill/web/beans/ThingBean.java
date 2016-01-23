@@ -28,8 +28,7 @@ public class ThingBean extends ProtectedBean {
     private Long thingID;
     
     private Thing thing;
-    
-    
+
     public Thing getThing() {
         if (thing==null) {
             thing = thingManager.findById(thingID);

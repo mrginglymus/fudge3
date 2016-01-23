@@ -5,13 +5,8 @@
  */
 package works.bill.entities;
 
+import javax.persistence.*;
 import java.util.List;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
 
 /**
  *
@@ -59,5 +54,14 @@ public class User {
     public void setThings(List<Thing> things) {
         this.things = things;
     }
-    
+
+    @Override
+    public boolean equals(Object other) {
+        if (this == other) { return true; }
+        if (!(other instanceof User)) { return false; }
+
+        final User user = (User) other;
+
+        return user.getUsername().equals(username);
+    }
 }

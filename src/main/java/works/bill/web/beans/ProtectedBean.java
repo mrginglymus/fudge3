@@ -5,8 +5,11 @@
  */
 package works.bill.web.beans;
 
-import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
+import works.bill.entities.User;
+import works.bill.service.UserManager;
+
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -16,11 +19,11 @@ public abstract class ProtectedBean  {
     
     @Autowired
     private HttpSession httpSession;
+
+    @Autowired
+    private UserManager ownerUserManager;
     
-    public String getUsername() {
-        return httpSession.getAttribute("user").toString();
+    public User getCurrentUser() {
+        return ownerUserManager.findByUsername(httpSession.getAttribute("user").toString());
     }
-    
-    //public abstract User loadSecurely();
-    
 }

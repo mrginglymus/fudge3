@@ -6,8 +6,7 @@ import org.aspectj.lang.annotation.Aspect;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.HttpClientErrorException;
-import works.bill.entities.Thing;
-import works.bill.entities.User;
+import works.bill.entities.OwnedThing;
 import works.bill.web.beans.ProtectedBean;
 
 /*
@@ -25,13 +24,14 @@ import works.bill.web.beans.ProtectedBean;
 public class ProtectedThingBeanAspect {
     
     @AfterReturning(
-        pointcut="execution(works.bill.entities.Thing works.bill.web.beans.ThingBean.*())",
+        pointcut="execution(works.bill.entities.OwnedThing+ works.bill.web.beans.ProtectedBean+.*(..))",
         returning="thing"
     )
-    public void protectThing(JoinPoint joinPoint, Thing thing) {
+    public void protectThing(JoinPoint joinPoint, OwnedThing thing) {
         ProtectedBean protectedBean = (ProtectedBean) joinPoint.getTarget();
-        if (!thing.getOwner().getUsername().equals(protectedBean.getUsername())) {
+        if (!thing.validOwner(protectedBean.getCurrentUser())) {
             throw new HttpClientErrorException(HttpStatus.FORBIDDEN, "Permission Denied");
         }
     }
+
 }
