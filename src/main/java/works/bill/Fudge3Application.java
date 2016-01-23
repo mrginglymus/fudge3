@@ -21,4 +21,5 @@ public class Fudge3Application {
             return new ServletRegistrationBean(facesServlet, "*.xhtml");
             
         }
+        
 }

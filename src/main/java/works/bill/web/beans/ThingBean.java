@@ -10,7 +10,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 import works.bill.entities.Thing;
-import works.bill.security.ProtectedThing;
+import works.bill.entities.User;
 import works.bill.service.ThingManager;
 
 /**
@@ -28,7 +28,8 @@ public class ThingBean extends ProtectedBean {
     private Long thingID;
     
     private Thing thing;
-
+    
+    
     public Thing getThing() {
         if (thing==null) {
             thing = thingManager.findById(thingID);
@@ -36,10 +37,4 @@ public class ThingBean extends ProtectedBean {
         return thing;
     }
 
-    public void setThing(Thing thing) {
-        this.thing = thing;
-    }
-    
-    
-    
 }

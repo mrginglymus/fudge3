@@ -12,13 +12,15 @@ import org.springframework.beans.factory.annotation.Autowired;
  *
  * @author bill
  */
-public abstract class ProtectedBean {
+public abstract class ProtectedBean  {
     
     @Autowired
     private HttpSession httpSession;
     
-    public String getUser() {
+    public String getUsername() {
         return httpSession.getAttribute("user").toString();
     }
+    
+    //public abstract User loadSecurely();
     
 }

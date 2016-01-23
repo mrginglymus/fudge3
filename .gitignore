@@ -4,6 +4,8 @@
 *.iml
 .mvn
 *.swp
+.nbactions.xml
+*.swo
 
 ## Directory-based project format:
 .idea/
