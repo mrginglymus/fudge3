@@ -5,9 +5,6 @@
  */
 package works.bill.web.beans;
 
-import java.util.List;
-import javax.annotation.PostConstruct;
-import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
@@ -16,6 +13,9 @@ import works.bill.entities.User;
 import works.bill.service.ThingManager;
 import works.bill.service.UserManager;
 
+import javax.annotation.PostConstruct;
+import java.util.List;
+
 /**
  *
  * @author bill
@@ -23,15 +23,15 @@ import works.bill.service.UserManager;
 @Component
 @Scope("application")
 public class SpinUpBean {
-    
-    @Autowired
-    private HttpSession httpSession;
-    
+
     @Autowired
     private ThingManager thingManager;
     
     @Autowired
     private UserManager userManager;
+
+    @Autowired
+    private SessionBean sessionBean;
     
     private User user1;
     private User user2;
@@ -43,14 +43,14 @@ public class SpinUpBean {
     private void init() {
         user1 = userManager.createUser("user1", "user1");
         user2 = userManager.createUser("user2", "user2");
-        
+
         thing1 = thingManager.createThing(user1, "This is thing one");
         thing2 = thingManager.createThing(user2, "This is thing two");
-        
+
         user1 = userManager.findByUsername("user1");
         user2 = userManager.findByUsername("user2");
-        
-        httpSession.setAttribute("user", "user1");
+
+        sessionBean.setCurrentUser(user1);
     }
 
     public User getUser1() {

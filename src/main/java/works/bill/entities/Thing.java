@@ -12,7 +12,7 @@ import javax.persistence.*;
  * @author bill
  */
 @Entity
-public class Thing implements OwnedThing {
+public class Thing {
     
     @Id
     @GeneratedValue(strategy=GenerationType.AUTO)
@@ -41,11 +41,6 @@ public class Thing implements OwnedThing {
 
     public void setOwner(User owner) {
         this.owner = owner;
-    }
-
-    @Override
-    public boolean validOwner(User user) {
-        return user.equals(owner);
     }
 
 }

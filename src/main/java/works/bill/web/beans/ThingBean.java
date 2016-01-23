@@ -8,9 +8,10 @@ package works.bill.web.beans;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Scope;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Component;
+import org.springframework.web.client.HttpClientErrorException;
 import works.bill.entities.Thing;
-import works.bill.entities.User;
 import works.bill.service.ThingManager;
 
 /**
@@ -19,10 +20,13 @@ import works.bill.service.ThingManager;
  */
 @Component
 @Scope("request")
-public class ThingBean extends ProtectedBean {
+public class ThingBean {
   
     @Autowired
     private ThingManager thingManager;
+
+    @Autowired
+    private SessionBean sessionBean;
     
     @Value("#{request.getParameter('thingID')}")
     private Long thingID;
@@ -31,9 +35,17 @@ public class ThingBean extends ProtectedBean {
 
     public Thing getThing() {
         if (thing==null) {
-            thing = thingManager.findById(thingID);
+            setThing(thingManager.findById(thingID));
         }
         return thing;
+    }
+
+    public void setThing(Thing thing) {
+        if (sessionBean.userCanAccessThing(thing)) {
+            this.thing = thing;
+        } else {
+            throw new HttpClientErrorException(HttpStatus.FORBIDDEN, "Forbidden");
+        }
     }
 
 }
