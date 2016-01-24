@@ -24,6 +24,8 @@ public class FudgeConfigurationProvider extends HttpConfigurationProvider {
         return ConfigurationBuilder.begin()
                 .addRule(Join.path("/").to("/index.xhtml"))
                 .addRule(Join.path("/thing/{thingID}/").to("/thing.xhtml"))
+                .addRule(Join.path("/login/").to("/login.xhtml"))
+                .addRule(Join.path("/error/").to("/error.xhtml"))
                 ;
     }
 }
