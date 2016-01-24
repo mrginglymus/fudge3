@@ -6,7 +6,6 @@
 package works.bill.web.beans;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Scope;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Component;
@@ -21,16 +20,15 @@ import works.bill.service.ThingManager;
 @Component
 @Scope("request")
 public class ThingBean {
-  
+
     @Autowired
     private ThingManager thingManager;
 
     @Autowired
     private SessionBean sessionBean;
-    
-    @Value("#{request.getParameter('thingID')}")
+
     private Long thingID;
-    
+
     private Thing thing;
 
     public Thing getThing() {
@@ -48,4 +46,11 @@ public class ThingBean {
         }
     }
 
+    public Long getThingID() {
+        return thingID;
+    }
+
+    public void setThingID(Long thingID) {
+        this.thingID = thingID;
+    }
 }
