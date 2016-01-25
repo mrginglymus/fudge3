@@ -1,15 +1,18 @@
-<ui:composition xmlns="http://www.w3.org/1999/xhtml"
-                xmlns:h="http://java.sun.com/jsf/html"
-                xmlns:ui="http://java.sun.com/jsf/facelets">
-    <div class="local-header subtitle">
-        <div class="container">
-            <div class="row">
-                <div class="#{hasInsetSideMenu ? 'col-md-9 col-md-offset-3' : 'col-md-12'} p-a-1">
-                    <h1>
-                        <ui:insert name="title">ICE</ui:insert>
-                    </h1>
+<!DOCTYPE html>
+<html lang="en" xml:lang="en"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+    <ui:composition>
+        <div class="local-header subtitle">
+            <div class="container">
+                <div class="row">
+                    <div class="#{hasInsetSideMenu ? 'col-md-9 col-md-offset-3' : 'col-md-12'} p-a-1">
+                        <h1>
+                            <ui:insert name="title">ICE</ui:insert>
+                        </h1>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-</ui:composition>
+    </ui:composition>
+</html>
