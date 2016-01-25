@@ -5,6 +5,7 @@ import org.springframework.stereotype.Component;
 import works.bill.entities.Thing;
 import works.bill.entities.User;
 
+import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 
 /**
@@ -40,6 +41,7 @@ public class SessionBean {
         this.currentUser = null;
         FacesContext.getCurrentInstance().getExternalContext().getSessionMap().clear();
         FacesContext.getCurrentInstance().getExternalContext().invalidateSession();
+        FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Logged Out", "You have successfully been logged out."));
         return "/index.xhtml";
     }
 
