@@ -39,7 +39,7 @@ public class FudgeMessagesRenderer extends MessagesRenderer {
         boolean escape = uiMessages.isEscape();
 
         writer.startElement("div", null);
-        writer.writeAttribute("class", "alert " + styleClass + (uiMessages.isGlobalOnly() ? " alert-top":""), null);
+        writer.writeAttribute("class", "alert " + styleClass + (uiMessages.isGlobalOnly() ? " alert-top":"") + (uiMessages.isClosable() ? " alert-dismissable fade in":""), null);
         writer.writeAttribute("role", "alert", null);
 
 
