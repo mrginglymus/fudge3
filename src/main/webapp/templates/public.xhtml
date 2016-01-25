@@ -11,11 +11,38 @@
             <nav class="navbar navbar-local container hidden-sm-down">
                 <div>
                     <ul class="nav navbar-nav nav-local">
-                        <ice:horizontalNavLink label="Home" navigateTo="pretty:public-home" />
+                        <ice:horizontalNavLink label="Home" navigateTo="index.xhtml" />
                     </ul>
                 </div>
             </nav>
         </div>
+    </ui:define>
+
+    <ui:param name="hasSidebar" value="true" />
+    <ui:define name="sidebar">
+        <ice:sidebar>
+            Hellooo
+        </ice:sidebar>
+    </ui:define>
+
+    <ui:param name="hasVerticalMenu" value="true" />
+    <ui:param name="isVerticalMenuInset" value="true" />
+    <ui:define name="vertical-menu">
+        <ice:verticalMenu>
+            <ice:verticalMenuAncestors>
+                <ice:verticalMenuAncestor label="Home" navigateTo="admin-home" />
+                <ice:verticalMenuAncestor label="Bookings" navigateTo="admin-booking" />
+                <ice:verticalMenuSiblings>
+                    <ice:verticalMenuParent label="Booking IB-0156784">
+                        <ice:verticalMenuChildren>
+                            <ice:verticalMenuChild label="Overview" navigateTo="admin-booking-view" />
+                            <ice:verticalMenuChild label="Registration Information" navigateTo="admin-booking-view-registration" />
+                            <ice:verticalMenuChild label="Booking Items" navigateTo="booking-view-items" />
+                        </ice:verticalMenuChildren>
+                    </ice:verticalMenuParent>
+                </ice:verticalMenuSiblings>
+            </ice:verticalMenuAncestors>
+        </ice:verticalMenu>
     </ui:define>
 
 </ui:composition>

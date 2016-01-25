@@ -4,7 +4,8 @@
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
-      xmlns:p="http://primefaces.org/ui">
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
 <h:head>
     <title>
         <ui:insert name="title">The University of Cambridge: ICE</ui:insert>
@@ -61,10 +62,8 @@
 
     <main class="container">
         <div class="row">
-            <c:if test="#{hasSideMenu}">
-                <ui:insert name="sidemenu" />
-            </c:if>
-            <div class="col-md-#{12 - (hasSidebar ? 3 : 0) - (hasSideMenu ? 3 : 0)}
+            <ui:insert name="vertical-menu" />
+            <div class="col-md-#{12 - (hasSidebar ? 3 : 0) - (hasVerticalMenu ? 3 : 0)}
 col-xs-12 main-content">
                 <p:messages id="messages" showDetail="true" autoUpdate="true" closable="true" globalOnly="true" />
                 <div class="p-a-1">
@@ -73,7 +72,7 @@ col-xs-12 main-content">
                     </h:form>
                 </div>
             </div>
-            <ui:insert name="sidebar"/>
+            <ui:insert name="sidebar" />
         </div>
     </main>
 
