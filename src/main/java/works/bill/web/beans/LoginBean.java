@@ -47,6 +47,7 @@ public class LoginBean {
         User user = userManager.findByUsername(username);
         if(user!=null && new BCryptPasswordEncoder().matches(password, user.getPassword())) {
             FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Success", "You have been succesfully logged in."));
+            FacesContext.getCurrentInstance().getExternalContext().getFlash().setKeepMessages(true);
             return sessionBean.initiateSession(user);
         } else {
             FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_WARN, "Invalid Username or Password", "Your username and password were not recognised."));
