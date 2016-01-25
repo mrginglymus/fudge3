@@ -1,15 +1,15 @@
 <!DOCTYPE html>
 <html lang="en" xml:lang="en"
       xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:ui="http://java.sun.com/jsf/facelets"
-      xmlns:f="http://java.sun.com/jsf/core">
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
 
 <ui:composition template="/templates/layout.xhtml">
     <f:metadata>
         <f:viewParam name="thingID" value="#{thingBean.thingID}" />
+        <f:viewAction action="#{thingBean.loadThing}" />
     </f:metadata>
     <ui:define name="content">
-
 
         <h2>A Secret Thing<span class="fa fa-lock"></span></h2>
 
