@@ -5,12 +5,14 @@
  */
 package works.bill.service;
 
-import java.util.ArrayList;
-import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import works.bill.entities.User;
 import works.bill.repositories.UserRepository;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
@@ -33,7 +35,7 @@ public class UserManager {
     public User createUser(String username, String password) {
         User user = new User();
         user.setUsername(username);
-        user.setPassword(password);
+        user.setPassword(new BCryptPasswordEncoder().encode(password));
         return userRepository.save(user);
     }
 }

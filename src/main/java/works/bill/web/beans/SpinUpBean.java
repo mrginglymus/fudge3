@@ -49,8 +49,6 @@ public class SpinUpBean {
 
         user1 = userManager.findByUsername("user1");
         user2 = userManager.findByUsername("user2");
-
-        sessionBean.setCurrentUser(user1);
     }
 
     public User getUser1() {

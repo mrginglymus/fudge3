@@ -1,13 +1,25 @@
 <!DOCTYPE html>
 <html lang="en" xml:lang="en"
       xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ice="http://xmlns.jcp.org/jsf/composite/components">
 
 <ui:composition template="/templates/layout.xhtml">
     <ui:define name="content">
 
-        <h2>Log in</h2>
-        <p class="lead">This is totes a login page.</p>
+        <ice:well>
+            <h2>Log in</h2>
+            <ice:basicInput label="Email" inputId="username" width="9">
+                <p:inputText id="username" value="#{loginBean.username}" type="email" required="true" requiredMessage="Email address is required" />
+            </ice:basicInput>
+
+            <ice:basicInput label="Password" inputId="password" width="7">
+                <p:password id="password" value="#{loginBean.password}" required="true" requiredMessage="Password is required" />
+            </ice:basicInput>
+
+            <p:commandButton value="Log in" action="#{loginBean.login}" process="@form" update="@form" styleClass="btn btn-primary btn-cta pull-right" />
+        </ice:well>
 
     </ui:define>
 </ui:composition>

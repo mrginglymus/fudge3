@@ -5,9 +5,11 @@
  */
 package works.bill.web.beans;
 
+import org.ocpsoft.rewrite.servlet.impl.HttpRewriteWrappedRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
+import org.springframework.web.util.UriComponentsBuilder;
 import works.bill.entities.Thing;
 import works.bill.service.ThingManager;
 
@@ -32,6 +34,9 @@ public class ThingBean {
         Thing thing = thingManager.findById(thingID);
         if (thing==null || !thing.getOwner().equals(sessionBean.getCurrentUser())) {
             FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_WARN, "Permission Denied", "Go away"));
+            HttpRewriteWrappedRequest request = (HttpRewriteWrappedRequest) FacesContext.getCurrentInstance().getExternalContext().getRequest();
+            String desired = UriComponentsBuilder.fromPath(request.getRequestURI()).queryParam("thingID", thingID).queryParam("faces-redirect", true).build().toString();
+            sessionBean.setDesired(desired);
             return "login.xhtml";
         } else {
             this.thing = thing;

@@ -5,6 +5,8 @@ import org.springframework.stereotype.Component;
 import works.bill.entities.Thing;
 import works.bill.entities.User;
 
+import javax.faces.context.FacesContext;
+
 /**
  * Created by Bill on 23/01/2016.
  */
@@ -14,16 +16,43 @@ public class SessionBean {
 
     private User currentUser;
 
+    private String desired;
+
     public User getCurrentUser() {
         return currentUser;
     }
 
-    public void setCurrentUser(User currentUser) {
-        this.currentUser = currentUser;
+    public boolean userCanAccessThing(Thing thing) {
+        if (currentUser == null) {
+            return false;
+        }
+        return thing.getOwner().equals(currentUser);
     }
 
-    public boolean userCanAccessThing(Thing thing) {
-        return thing.getOwner().equals(currentUser);
+    public String initiateSession(User user) {
+        this.currentUser = user;
+        String redirectTo = desired != null ? desired : "/index.xhtml";
+        desired = null;
+        return redirectTo;
+    }
+
+    public String endSession() {
+        this.currentUser = null;
+        FacesContext.getCurrentInstance().getExternalContext().getSessionMap().clear();
+        FacesContext.getCurrentInstance().getExternalContext().invalidateSession();
+        return "/index.xhtml";
+    }
+
+    public Boolean isLoggedIn() {
+        return (currentUser != null);
+    }
+
+    public String getDesired() {
+        return desired;
+    }
+
+    public void setDesired(String desired) {
+        this.desired = desired;
     }
 
 }

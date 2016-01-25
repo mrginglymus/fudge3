@@ -2,7 +2,8 @@
 <html lang="en" xml:lang="en"
       xmlns="http://www.w3.org/1999/xhtml"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-      xmlns:ice="http://xmlns.jcp.org/jsf/composite/components">
+      xmlns:ice="http://xmlns.jcp.org/jsf/composite/components"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
 
 <ui:composition template="/templates/layout.xhtml">
 
@@ -11,7 +12,15 @@
             <nav class="navbar navbar-local container hidden-sm-down">
                 <div>
                     <ul class="nav navbar-nav nav-local">
-                        <ice:horizontalNavLink label="Home" navigateTo="index.xhtml" />
+                        <ice:horizontalNavLink label="Home" navigateTo="/index.xhtml" />
+                        <c:choose>
+                            <c:when test="#{sessionBean.isLoggedIn()}">
+                                <ice:horizontalNavLink label="Log Out" navigateTo="/logout.xhtml" />
+                            </c:when>
+                            <c:otherwise>
+                                <ice:horizontalNavLink label="Log In" navigateTo="/login.xhtml" />
+                            </c:otherwise>
+                        </c:choose>
                     </ul>
                 </div>
             </nav>
