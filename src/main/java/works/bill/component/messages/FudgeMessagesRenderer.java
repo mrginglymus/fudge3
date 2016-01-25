@@ -59,6 +59,7 @@ public class FudgeMessagesRenderer extends MessagesRenderer {
             writer.writeAttribute("class", "col-md-4", null);
             writer.startElement("span", null);
             writer.writeAttribute("class", "fa " + iconClass, null);
+            writer.writeAttribute("style", "padding-right:5px;", null);
             writer.endElement("span");
             writer.startElement("span", null);
 
