@@ -7,11 +7,12 @@ package works.bill.web.beans;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
-import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Component;
-import org.springframework.web.client.HttpClientErrorException;
 import works.bill.entities.Thing;
 import works.bill.service.ThingManager;
+
+import javax.faces.context.FacesContext;
+import java.io.IOException;
 
 /**
  *
@@ -33,16 +34,26 @@ public class ThingBean {
 
     public Thing getThing() {
         if (thing==null) {
-            setThing(thingManager.findById(thingID));
+            setThing(getThingOrRedirect(thingID));
         }
         return thing;
     }
 
     public void setThing(Thing thing) {
-        if (sessionBean.userCanAccessThing(thing)) {
-            this.thing = thing;
+        this.thing = thing;
+    }
+
+    private Thing getThingOrRedirect(Long thingID) {
+        Thing gotThing = thingManager.findById(thingID);
+        if (!gotThing.getOwner().equals(sessionBean.getCurrentUser())) {
+            try {
+                FacesContext.getCurrentInstance().getExternalContext().redirect("/login/");
+            } catch (IOException e) {
+            } finally {
+                return null;
+            }
         } else {
-            throw new HttpClientErrorException(HttpStatus.FORBIDDEN, "Forbidden");
+            return gotThing;
         }
     }
 

@@ -16,11 +16,6 @@
     </servlet-mapping>
 
     <error-page>
-        <exception-type>org.springframework.web.client.HttpClientErrorException</exception-type>
-        <location>/login/</location>
-    </error-page>
-
-    <error-page>
         <location>/error/</location>
     </error-page>
 
