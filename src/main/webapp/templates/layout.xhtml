@@ -63,7 +63,7 @@
             <ui:insert name="vertical-menu" />
             <div class="col-md-#{12 - (hasSidebar ? 3 : 0) - (hasVerticalMenu ? 3 : 0)}
 col-xs-12 main-content">
-                <p:messages id="messages" showDetail="true" autoUpdate="true" closable="true" globalOnly="true" />
+                <p:messages id="messages" showDetail="true" autoUpdate="true" closable="true" globalOnly="true" escape="false" />
                 <div class="p-a-1">
                     <h:form id="iceForm">
                         <ui:insert name="content" />
