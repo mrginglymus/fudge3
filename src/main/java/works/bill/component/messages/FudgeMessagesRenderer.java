@@ -38,16 +38,18 @@ public class FudgeMessagesRenderer extends MessagesRenderer {
 
         boolean escape = uiMessages.isEscape();
 
-        writer.startElement("div", null);
-        writer.writeAttribute("class", "alert " + styleClass + (uiMessages.isGlobalOnly() ? " alert-top":"") + (uiMessages.isClosable() ? " alert-dismissable fade in":""), null);
-        writer.writeAttribute("role", "alert", null);
-
-
-        if(uiMessages.isClosable()) {
-            encodeCloseIcon(context, uiMessages);
-        }
 
         for (FacesMessage msg : messages) {
+
+            writer.startElement("div", null);
+            writer.writeAttribute("class", "alert " + styleClass + (uiMessages.isGlobalOnly() ? " alert-top":"") + (uiMessages.isClosable() ? " alert-dismissable fade in":""), null);
+            writer.writeAttribute("role", "alert", null);
+
+
+            if(uiMessages.isClosable()) {
+                encodeCloseIcon(context, uiMessages);
+            }
+
 
             String summary = msg.getSummary() != null ? msg.getSummary() : "Success";
             String detail = msg.getDetail() != null ? msg.getDetail() : summary;
@@ -84,9 +86,10 @@ public class FudgeMessagesRenderer extends MessagesRenderer {
             writer.endElement("div");
 
             msg.rendered();
-        }
 
-        writer.endElement("div");
+
+            writer.endElement("div");
+        }
 
     }
 
