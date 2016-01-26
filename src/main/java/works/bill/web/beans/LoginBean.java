@@ -45,7 +45,7 @@ public class LoginBean {
 
     public String login() {
         User user = userManager.findByUsername(username);
-        if(user!=null && new BCryptPasswordEncoder().matches(password, user.getPassword())) {
+        if(user!=null && user.getActivated() && new BCryptPasswordEncoder().matches(password, user.getPassword())) {
             FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Success", "You have been succesfully logged in."));
             FacesContext.getCurrentInstance().getExternalContext().getFlash().setKeepMessages(true);
             return sessionBean.initiateSession(user);

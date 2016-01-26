@@ -32,7 +32,7 @@ public class SessionBean {
 
     public String initiateSession(User user) {
         this.currentUser = user;
-        String redirectTo = desired != null ? desired : "/index.xhtml";
+        String redirectTo = desired != null ? desired : "/index.xhtml?faces-redirect=true";
         desired = null;
         return redirectTo;
     }

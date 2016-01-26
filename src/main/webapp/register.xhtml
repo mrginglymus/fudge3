@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en" xml:lang="en"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ice="http://xmlns.jcp.org/jsf/composite/components">
+
+<ui:composition template="/templates/layout.xhtml">
+    <ui:define name="content">
+
+        <ice:well>
+            <h2>Register</h2>
+            <ice:basicInput label="Email" inputId="username" width="9">
+                <p:inputText
+                        id="username"
+                        value="#{registrationBean.userRegistration.username}"
+                        type="email"
+                        required="true"
+                        requiredMessage="Email address is required"
+                        validator="#{registrationBean.validateUsername}"/>
+            </ice:basicInput>
+
+            <ice:basicInput label="Password" inputId="password" width="7">
+                <p:password
+                        id="password"
+                        value="#{registrationBean.userRegistration.password}"
+                        required="true"
+                        requiredMessage="Password is required"
+                        match=":#{p:component('confirmPassword')}" />
+            </ice:basicInput>
+
+            <ice:basicInput label="Password Confirmation" inputId="confirmPassword" width="7">
+                <p:password
+                    id="confirmPassword"
+                    value="#{registrationBean.userRegistration.password}"
+                    required="true"
+                    requiredMessage="Please confirm your password" />
+            </ice:basicInput>
+
+            <p:commandButton value="Log in" action="#{registrationBean.register}" process="@form" update="@form" styleClass="btn btn-primary btn-cta pull-right" />
+        </ice:well>
+
+    </ui:define>
+</ui:composition>
+</html>

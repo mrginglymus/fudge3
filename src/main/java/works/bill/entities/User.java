@@ -23,7 +23,12 @@ public class User {
     private String username;
     
     private String password;
-    
+
+    private String activationHash;
+
+    @Column(nullable = false)
+    private Boolean activated = false;
+
     @OneToMany(mappedBy = "owner")
     private List<Thing> things;
 
@@ -53,6 +58,22 @@ public class User {
 
     public void setThings(List<Thing> things) {
         this.things = things;
+    }
+
+    public String getActivationHash() {
+        return activationHash;
+    }
+
+    public void setActivationHash(String activationHash) {
+        this.activationHash = activationHash;
+    }
+
+    public Boolean getActivated() {
+        return activated;
+    }
+
+    public void setActivated(Boolean activated) {
+        this.activated = activated;
     }
 
     @Override
