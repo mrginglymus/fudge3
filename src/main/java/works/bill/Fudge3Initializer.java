@@ -1,5 +1,6 @@
 package works.bill;
 
+import com.ocpsoft.pretty.faces.config.PrettyConfigurator;
 import org.springframework.boot.context.embedded.ServletContextInitializer;
 import org.springframework.context.annotation.Configuration;
 
@@ -15,5 +16,7 @@ public class Fudge3Initializer implements ServletContextInitializer {
     @Override
     public void onStartup(ServletContext servletContext) throws ServletException {
         servletContext.setInitParameter("primefaces.THEME", "campl");
+        PrettyConfigurator configurator = new PrettyConfigurator(servletContext);
+        configurator.configure();
     }
 }

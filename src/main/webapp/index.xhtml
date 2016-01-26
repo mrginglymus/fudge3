@@ -14,7 +14,7 @@
         <ul>
             <ui:repeat value="${spinUpBean.things}" var="thing">
                 <li>
-                    <h:link outcome="thing" value="Secret thing belonging to ${thing.owner.username}">
+                    <h:link outcome="pretty:thing" value="Secret thing belonging to ${thing.owner.username}">
                         <f:param name="thingID" value="${thing.id}" />
                     </h:link>
                 </li>

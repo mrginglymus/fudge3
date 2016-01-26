@@ -3,6 +3,7 @@ package works.bill;
 import org.ocpsoft.rewrite.annotation.RewriteConfiguration;
 import org.ocpsoft.rewrite.config.Configuration;
 import org.ocpsoft.rewrite.config.ConfigurationBuilder;
+import org.ocpsoft.rewrite.prettyfaces.PrettyFacesRewriteConfigurationProvider;
 import org.ocpsoft.rewrite.servlet.config.HttpConfigurationProvider;
 import org.ocpsoft.rewrite.servlet.config.rule.Join;
 
@@ -12,14 +13,14 @@ import javax.servlet.ServletContext;
  * Created by Bill on 24/01/2016.
  */
 @RewriteConfiguration
-public class FudgeConfigurationProvider extends HttpConfigurationProvider {
+public class FudgeConfigurationProvider extends PrettyFacesRewriteConfigurationProvider {
 
     @Override
     public int priority () {
         return 10;
     }
 
-    @Override
+    /*@Override
     public Configuration getConfiguration(final ServletContext context) {
         return ConfigurationBuilder.begin()
                 .addRule(Join.path("/").to("/index.xhtml"))
@@ -30,5 +31,5 @@ public class FudgeConfigurationProvider extends HttpConfigurationProvider {
                 .addRule(Join.path("/activate/").to("/activate.xhtml"))
                 .addRule(Join.path("/error/").to("/error.xhtml"))
                 ;
-    }
+    }*/
 }

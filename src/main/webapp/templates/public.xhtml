@@ -12,14 +12,14 @@
             <nav class="navbar navbar-local container hidden-sm-down">
                 <div>
                     <ul class="nav navbar-nav nav-local">
-                        <ice:horizontalNavLink label="Home" navigateTo="/index.xhtml" />
+                        <ice:horizontalNavLink label="Home" navigateTo="pretty:home" />
                         <c:choose>
                             <c:when test="#{sessionBean.isLoggedIn()}">
-                                <ice:horizontalNavLink label="Log Out" navigateTo="/logout.xhtml" />
+                                <ice:horizontalNavLink label="Log Out" navigateTo="pretty:logout" />
                             </c:when>
                             <c:otherwise>
-                                <ice:horizontalNavLink label="Log In" navigateTo="/login.xhtml" />
-                                <ice:horizontalNavLink label="Register" navigateTo="/register.xhtml" />
+                                <ice:horizontalNavLink label="Log In" navigateTo="pretty:login" />
+                                <ice:horizontalNavLink label="Register" navigateTo="pretty:register" />
                             </c:otherwise>
                         </c:choose>
                     </ul>
