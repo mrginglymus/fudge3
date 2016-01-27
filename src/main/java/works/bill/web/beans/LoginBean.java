@@ -28,8 +28,6 @@ public class LoginBean {
 
     private String password;
 
-    private String next;
-
     public String getUsername() {
         return username;
     }
@@ -46,14 +44,6 @@ public class LoginBean {
         this.password = password;
     }
 
-    public String getNext() {
-        return next;
-    }
-
-    public void setNext(String next) {
-        this.next = next;
-    }
-
     public String login() {
         User user = userManager.findByUsername(username);
         if(user!=null && user.getActivated() && new BCryptPasswordEncoder().matches(password, user.getPassword())) {
@@ -61,7 +51,8 @@ public class LoginBean {
             FacesContext.getCurrentInstance().getExternalContext().getFlash().setKeepMessages(true);
             sessionBean.initiateSession(user);
             try {
-                FacesContext.getCurrentInstance().getExternalContext().redirect(next != null ? next : "/");
+                FacesContext.getCurrentInstance().getExternalContext().redirect(sessionBean.getDesired());
+                sessionBean.setDesired("/");
                 return null;
             } catch (IOException e) {
                 return "/index.xhtml";

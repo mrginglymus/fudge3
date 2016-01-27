@@ -17,6 +17,8 @@ public class SessionBean {
 
     private User currentUser;
 
+    private String desired = "/";
+
     public User getCurrentUser() {
         return currentUser;
     }
@@ -42,6 +44,14 @@ public class SessionBean {
 
     public Boolean isLoggedIn() {
         return (currentUser != null);
+    }
+
+    public String getDesired() {
+        return desired;
+    }
+
+    public void setDesired(String desired) {
+        this.desired = desired;
     }
 
 }

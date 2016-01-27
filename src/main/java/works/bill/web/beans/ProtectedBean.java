@@ -20,8 +20,8 @@ public abstract class ProtectedBean {
             return "index.xhtml";
         } else {
             HttpRewriteWrappedRequest request = (HttpRewriteWrappedRequest) FacesContext.getCurrentInstance().getExternalContext().getRequest();
-            String next = request.getAttribute("javax.servlet.forward.request_uri").toString();
-            return "login.xhtml?next=" + next;
+            sessionBean.setDesired(request.getAttribute("javax.servlet.forward.request_uri").toString());
+            return "login.xhtml";
         }
     }
 
