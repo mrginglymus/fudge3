@@ -17,8 +17,6 @@ public class SessionBean {
 
     private User currentUser;
 
-    private String desired;
-
     public User getCurrentUser() {
         return currentUser;
     }
@@ -30,11 +28,8 @@ public class SessionBean {
         return thing.getOwner().equals(currentUser);
     }
 
-    public String initiateSession(User user) {
+    public void initiateSession(User user) {
         this.currentUser = user;
-        String redirectTo = desired != null ? desired : "/index.xhtml?faces-redirect=true";
-        desired = null;
-        return redirectTo;
     }
 
     public String endSession() {
@@ -47,14 +42,6 @@ public class SessionBean {
 
     public Boolean isLoggedIn() {
         return (currentUser != null);
-    }
-
-    public String getDesired() {
-        return desired;
-    }
-
-    public void setDesired(String desired) {
-        this.desired = desired;
     }
 
 }

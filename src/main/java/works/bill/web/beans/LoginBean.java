@@ -9,6 +9,7 @@ import works.bill.service.UserManager;
 
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
+import java.io.IOException;
 
 /**
  * Created by Bill on 25/01/2016.
@@ -27,6 +28,8 @@ public class LoginBean {
 
     private String password;
 
+    private String next;
+
     public String getUsername() {
         return username;
     }
@@ -43,12 +46,26 @@ public class LoginBean {
         this.password = password;
     }
 
+    public String getNext() {
+        return next;
+    }
+
+    public void setNext(String next) {
+        this.next = next;
+    }
+
     public String login() {
         User user = userManager.findByUsername(username);
         if(user!=null && user.getActivated() && new BCryptPasswordEncoder().matches(password, user.getPassword())) {
             FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Success", "You have been succesfully logged in."));
             FacesContext.getCurrentInstance().getExternalContext().getFlash().setKeepMessages(true);
-            return sessionBean.initiateSession(user);
+            sessionBean.initiateSession(user);
+            try {
+                FacesContext.getCurrentInstance().getExternalContext().redirect(next != null ? next : "/");
+                return null;
+            } catch (IOException e) {
+                return "/index.xhtml";
+            }
         } else {
             FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_WARN, "Invalid Username or Password", "Your username and password were not recognised."));
             return null;

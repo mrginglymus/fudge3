@@ -3,11 +3,14 @@
       xmlns="http://www.w3.org/1999/xhtml"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:p="http://primefaces.org/ui"
-      xmlns:ice="http://xmlns.jcp.org/jsf/composite/components">
+      xmlns:ice="http://xmlns.jcp.org/jsf/composite/components"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
 
 <ui:composition template="/templates/layout.xhtml">
+    <f:metadata>
+        <f:viewParam name="next" value="#{loginBean.next}" />
+    </f:metadata>
     <ui:define name="content">
-
         <ice:well>
             <h2>Log in</h2>
             <ice:basicInput label="Email" inputId="username" width="9">
