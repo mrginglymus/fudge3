@@ -55,7 +55,7 @@ public class LoginBean {
                 sessionBean.setDesired("/");
                 return null;
             } catch (IOException e) {
-                return "/index.xhtml";
+                return "/index.xhtml?faces-redirect=true";
             }
         } else {
             FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_WARN, "Invalid Username or Password", "Your username and password were not recognised."));
