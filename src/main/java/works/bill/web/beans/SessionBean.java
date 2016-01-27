@@ -36,6 +36,7 @@ public class SessionBean {
 
     public String endSession() {
         this.currentUser = null;
+        this.desired = "/";
         FacesContext.getCurrentInstance().getExternalContext().getSessionMap().clear();
         FacesContext.getCurrentInstance().getExternalContext().invalidateSession();
         FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Logged Out", "You have successfully been logged out."));
