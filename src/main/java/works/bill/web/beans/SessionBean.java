@@ -2,7 +2,6 @@ package works.bill.web.beans;
 
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
-import works.bill.entities.Thing;
 import works.bill.entities.User;
 
 import javax.faces.application.FacesMessage;
@@ -21,13 +20,6 @@ public class SessionBean {
 
     public User getCurrentUser() {
         return currentUser;
-    }
-
-    public boolean userCanAccessThing(Thing thing) {
-        if (currentUser == null) {
-            return false;
-        }
-        return thing.getOwner().equals(currentUser);
     }
 
     public void initiateSession(User user) {
