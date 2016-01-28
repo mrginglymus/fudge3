@@ -46,7 +46,8 @@ public class RegistrationBean {
         String link = String.format("http://localhost:8080/activate/?username=%s&key=%s", user.getUsername(), user.getActivationHash());
         FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Account Created", "Please check your emails"));
         FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "DEBUG", "goto <a href=\"" + link + "\">here</a>"));
-        return "/index.xhtml";
+        FacesContext.getCurrentInstance().getExternalContext().getFlash().setKeepMessages(true);
+        return "/index.xhtml?faces-redirect=true";
     }
 
 }
