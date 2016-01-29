@@ -36,5 +36,11 @@ public class ThingManager {
         thing.setSecretText(secret);
         return thingRepository.save(thing);
     }
+
+    public Thing incrementThing(long thingID) {
+        Thing thing = findById(thingID);
+        thing.setCount(thing.getCount() + 1);
+        return thingRepository.save(thing);
+    }
     
 }

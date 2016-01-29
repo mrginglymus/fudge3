@@ -19,6 +19,8 @@ public class Thing {
     private long Id;
     
     private String secretText;
+
+    private long Count = 0;
     
     @ManyToOne(fetch = javax.persistence.FetchType.EAGER)
     private User owner;
@@ -43,4 +45,11 @@ public class Thing {
         this.owner = owner;
     }
 
+    public long getCount() {
+        return Count;
+    }
+
+    public void setCount(long count) {
+        Count = count;
+    }
 }

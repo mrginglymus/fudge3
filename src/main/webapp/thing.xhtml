@@ -3,7 +3,9 @@
       xmlns="http://www.w3.org/1999/xhtml"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:ice="http://xmlns.jcp.org/jsf/composite/components"
-      xmlns:f="http://xmlns.jcp.org/jsf/core">
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
 
 <ui:composition template="/templates/public.xhtml">
     <f:metadata>
@@ -15,6 +17,10 @@
         <h2><span class="fa fa-lock"> </span> A Secret Thing</h2>
 
         <blockquote><p>${thingBean.thing.secretText}</p></blockquote>
+
+        <p><h:outputText value="#{thingBean.thing.count}" /></p>
+
+        <p><p:commandButton action="#{thingBean.incrementThing}" value="Increment" update="@form" /></p>
 
     </ui:define>
 

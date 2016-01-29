@@ -16,7 +16,7 @@ import works.bill.service.ThingManager;
  * @author bill
  */
 @Component
-@Scope("request")
+@Scope("view")
 public class ThingBean extends ProtectedBean {
 
     @Autowired
@@ -46,5 +46,9 @@ public class ThingBean extends ProtectedBean {
 
     public void setThingID(Long thingID) {
         this.thingID = thingID;
+    }
+
+    public void incrementThing() {
+        this.thing = thingManager.incrementThing(thingID);
     }
 }
