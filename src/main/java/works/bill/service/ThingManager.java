@@ -29,6 +29,10 @@ public class ThingManager {
     public Thing findById(Long id) {
         return thingRepository.findOne(id);
     }
+
+    public List<Thing> findThingsByUser(User user) {
+        return thingRepository.findAllByOwner(user);
+    }
     
     public Thing createThing(User user, String secret) {
         Thing thing = new Thing();

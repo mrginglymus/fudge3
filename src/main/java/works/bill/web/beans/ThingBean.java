@@ -13,6 +13,8 @@ import works.bill.entities.Thing;
 import works.bill.service.ThingManager;
 import works.bill.web.security.ThingSecurity;
 
+import java.util.List;
+
 /**
  *
  * @author bill
@@ -33,9 +35,13 @@ public class ThingBean {
 
     public Thing getThing() throws HttpSessionRequiredException {
         if (thing == null && thingID != null) {
-            thing = thingSecurity.check(thingManager.findById(thingID));
+            thing = thingSecurity.findById(thingID);
         }
         return thing;
+    }
+
+    public List<Thing> getThings() throws HttpSessionRequiredException {
+        return thingSecurity.findAll();
     }
 
     public Long getThingID() {
