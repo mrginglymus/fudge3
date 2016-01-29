@@ -52,7 +52,7 @@ public class LoginBean {
             sessionBean.initiateSession(user);
             try {
                 FacesContext.getCurrentInstance().getExternalContext().redirect(sessionBean.getDesired());
-                sessionBean.setDesired("/");
+                sessionBean.clearDesired();
                 return null;
             } catch (IOException e) {
                 return "/index.xhtml?faces-redirect=true";

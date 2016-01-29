@@ -8,8 +8,10 @@ package works.bill.web.beans;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
+import org.springframework.web.HttpSessionRequiredException;
 import works.bill.entities.Thing;
 import works.bill.service.ThingManager;
+import works.bill.web.security.ThingSecurity;
 
 /**
  *
@@ -17,26 +19,22 @@ import works.bill.service.ThingManager;
  */
 @Component
 @Scope("view")
-public class ThingBean extends ProtectedBean {
+public class ThingBean {
 
     @Autowired
     private ThingManager thingManager;
 
-    public String loadThing() {
-        Thing thing = thingManager.findById(thingID);
-        if (thing==null || !thing.getOwner().equals(sessionBean.getCurrentUser())) {
-            return handlePermissionDenied();
-        } else {
-            this.thing = thing;
-            return null;
-        }
-    }
+    @Autowired
+    private ThingSecurity thingSecurity;
 
     private Long thingID;
 
     private Thing thing;
 
-    public Thing getThing() {
+    public Thing getThing() throws HttpSessionRequiredException {
+        if (thing == null && thingID != null) {
+            thing = thingSecurity.check(thingManager.findById(thingID));
+        }
         return thing;
     }
 

@@ -1,5 +1,6 @@
 package works.bill.web.beans;
 
+import org.ocpsoft.rewrite.servlet.impl.HttpRewriteWrappedRequest;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 import works.bill.entities.User;
@@ -43,8 +44,13 @@ public class SessionBean {
         return desired;
     }
 
-    public void setDesired(String desired) {
-        this.desired = desired;
+    public void clearDesired() {
+        desired = "/";
+    }
+
+    public void setDesired() {
+        HttpRewriteWrappedRequest request = (HttpRewriteWrappedRequest) FacesContext.getCurrentInstance().getExternalContext().getRequest();
+        desired = request.getAttribute("javax.servlet.forward.request_uri").toString();
     }
 
 }
