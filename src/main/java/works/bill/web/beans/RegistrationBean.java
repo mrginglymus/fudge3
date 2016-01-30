@@ -43,7 +43,7 @@ public class RegistrationBean {
 
     public String register() {
         User user = userManager.createUser(userRegistration);
-        String link = String.format("http://localhost:8080/activate/?username=%s&key=%s", user.getUsername(), user.getActivationHash());
+        String link = String.format("http://localhost:9090/activate/?username=%s&key=%s", user.getUsername(), user.getActivationHash());
         FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Account Created", "Please check your emails"));
         FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "DEBUG", "goto <a href=\"" + link + "\">here</a>"));
         FacesContext.getCurrentInstance().getExternalContext().getFlash().setKeepMessages(true);
