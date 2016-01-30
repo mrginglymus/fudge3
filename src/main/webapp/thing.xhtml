@@ -17,9 +17,16 @@
 
         <blockquote><p>${thingBean.thing.secretText}</p></blockquote>
 
-        <p><h:outputText value="#{thingBean.thing.count}" /></p>
+        <p><h:outputText value="#{thingBean.thing.count}" id="thingCount" /></p>
 
-        <p><p:commandButton action="#{thingBean.incrementThing}" value="Increment" update="@form" /></p>
+        <p>
+            <p:commandButton
+                    action="#{thingBean.incrementThing}"
+                    update="thingCount"
+                    value="Increment"
+                    styleClass="btn btn-secondary"
+            />
+        </p>
 
     </ui:define>
 
