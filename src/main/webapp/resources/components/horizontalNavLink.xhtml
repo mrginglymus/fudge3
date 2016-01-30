@@ -10,10 +10,11 @@
     <composite:interface>
         <composite:attribute name="navigateTo" required="true"/>
         <composite:attribute name="label" required="true"/>
+        <composite:attribute name="pullRight" default="false" />
     </composite:interface>
 
     <composite:implementation>
-        <li class="nav-item #{cc.attrs.navigateTo == menuRoot ? 'active' : ''}">
+        <li class="nav-item #{cc.attrs.navigateTo == menuRoot ? 'active' : ''} #{cc.attrs.pullRight ? 'nav-item-right' : ''}">
             <h:link outcome="#{cc.attrs.navigateTo}" styleClass="nav-link">
                 <h:outputText value="#{cc.attrs.label}" />
             </h:link>

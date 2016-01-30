@@ -16,11 +16,11 @@
                         <ice:horizontalNavLink label="Things" navigateTo="/things.xhtml" />
                         <c:choose>
                             <c:when test="#{sessionBean.isLoggedIn()}">
-                                <ice:horizontalNavLink label="Log Out" navigateTo="/logout.xhtml" />
+                                <ice:horizontalNavLink label="Log Out" navigateTo="/logout.xhtml" pullRight="true" />
                             </c:when>
                             <c:otherwise>
-                                <ice:horizontalNavLink label="Log In" navigateTo="/login.xhtml" />
-                                <ice:horizontalNavLink label="Register" navigateTo="/register.xhtml" />
+                                <ice:horizontalNavLink label="Log In" navigateTo="/login.xhtml" pullRight="true" />
+                                <ice:horizontalNavLink label="Register" navigateTo="/register.xhtml" pullRight="true" />
                             </c:otherwise>
                         </c:choose>
                     </ul>

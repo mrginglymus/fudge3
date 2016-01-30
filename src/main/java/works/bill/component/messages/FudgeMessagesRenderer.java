@@ -98,7 +98,7 @@ public class FudgeMessagesRenderer extends MessagesRenderer {
         ResponseWriter writer = context.getResponseWriter();
 
         writer.startElement("div", null);
-        writer.writeAttribute("class", "close pull-right", null);
+        writer.writeAttribute("class", "close pull-xs-right", null);
         writer.writeAttribute("data-dismiss", "alert", null);
         writer.write("&nbsp;");
         writer.endElement("div");
