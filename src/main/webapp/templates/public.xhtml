@@ -13,6 +13,7 @@
                 <div>
                     <ul class="nav navbar-nav nav-local">
                         <ice:horizontalNavLink label="Home" navigateTo="/index.xhtml" />
+                        <ice:horizontalNavLink label="Things" navigateTo="/things.xhtml" />
                         <c:choose>
                             <c:when test="#{sessionBean.isLoggedIn()}">
                                 <ice:horizontalNavLink label="Log Out" navigateTo="/logout.xhtml" />
