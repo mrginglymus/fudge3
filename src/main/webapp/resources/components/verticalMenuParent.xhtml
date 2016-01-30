@@ -16,9 +16,10 @@
     <composite:implementation>
         <li class="vertical-menu-parent">
             <h:link
-                    outcome="#{view.viewId != cc.attrs.navigateTo ? cc.attrs.navigateTo : ''}"
+                    outcome="#{cc.attrs.navigateTo}"
                     includeViewParams="#{cc.attrs.includeViewParams}"
-                    value="#{cc.attrs.label}" />
+                    value="#{cc.attrs.label}"
+                    disabled="#{view.viewId == cc.attrs.navigateTo}"/>
             <composite:insertChildren />
         </li>
     </composite:implementation>

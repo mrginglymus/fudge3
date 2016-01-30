@@ -17,9 +17,10 @@
     <composite:implementation>
         <li>
             <h:link
-                    outcome="#{view.viewId != cc.attrs.navigateTo ? cc.attrs.navigateTo : ''}"
+                    outcome="#{cc.attrs.navigateTo}"
                     value="#{cc.attrs.label}"
-                    includeViewParams="#{cc.attrs.includeViewParams}" />
+                    includeViewParams="#{cc.attrs.includeViewParams}"
+                    disabled="#{view.viewId == cc.attrs.navigateTo}" />
         </li>
     </composite:implementation>
 
