@@ -8,7 +8,6 @@ package works.bill.web.beans;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
-import org.springframework.web.HttpSessionRequiredException;
 import works.bill.entities.Thing;
 import works.bill.service.ThingManager;
 import works.bill.web.security.ThingSecurity;
@@ -33,14 +32,14 @@ public class ThingBean {
 
     private Thing thing;
 
-    public Thing getThing() throws HttpSessionRequiredException {
+    public Thing getThing() {
         if (thing == null && thingID != null) {
             thing = thingSecurity.findById(thingID);
         }
         return thing;
     }
 
-    public List<Thing> getThings() throws HttpSessionRequiredException {
+    public List<Thing> getThings() {
         return thingSecurity.findAll();
     }
 
