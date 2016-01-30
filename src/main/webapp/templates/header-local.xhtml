@@ -6,7 +6,7 @@
 
 <ui:composition>
     <div class="local-header">
-        <c:if test="#{hasVerticalMenu}">
+        <c:if test="#{hasVerticalMenu || hasHiddenVerticalMenu}">
             <a class="local-menu-button pull-right hidden-md-up" href="#vertical-menu" data-toggle="collapse">
                 <span class="fa fa-bars fa-2x"></span>
             </a>

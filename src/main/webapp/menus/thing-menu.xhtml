@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en" xml:lang="en"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:ice="http://xmlns.jcp.org/jsf/composite/components"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+<ui:composition>
+    <ice:verticalMenu>
+        <ice:verticalMenuAncestors>
+            <ice:verticalMenuAncestor label="Home" navigateTo="/index.xhtml" />
+            <ice:verticalMenuAncestor label="Things" navigateTo="/things.xhtml" />
+            <ice:verticalMenuSiblings>
+                <ice:verticalMenuParent label="Secret Thing #{thingBean.thingID}" navigateTo="/thing.xhtml" >
+                    <ice:verticalMenuChildren>
+                        <ice:verticalMenuChild label="Overview" navigateTo="/thing-overview.xhtml" />
+                    </ice:verticalMenuChildren>
+                </ice:verticalMenuParent>
+            </ice:verticalMenuSiblings>
+        </ice:verticalMenuAncestors>
+    </ice:verticalMenu>
+</ui:composition>
+</html>

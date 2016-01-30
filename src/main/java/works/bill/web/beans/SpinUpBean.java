@@ -26,22 +26,6 @@ public class SpinUpBean {
 
     @Autowired
     private ThingManager thingManager;
-    
-    @Autowired
-    private UserManager userManager;
-
-    @Autowired
-    private SessionBean sessionBean;
-    
-    @PostConstruct
-    private void init() {
-        User user1 = userManager.createUser("user1", "user1");
-        User user2 = userManager.createUser("user2", "user2");
-
-        thingManager.createThing(user1, "This is thing one");
-        thingManager.createThing(user2, "This is thing two");
-        thingManager.createThing(user1, "This is thing three");
-    }
 
     public List<Thing> getThings() { return thingManager.findAll(); }
     

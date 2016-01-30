@@ -7,11 +7,10 @@
 <ui:component>
 
     <composite:interface>
-
     </composite:interface>
 
     <composite:implementation>
-        <div class="vertical-menu #{isVerticalMenuInset ? 'vertical-menu-inset' : ''} collapse navbar-toggleable-sm" id="vertical-menu">
+        <div class="vertical-menu #{isVerticalMenuInset ? 'vertical-menu-inset' : ''} collapse #{hasHiddenVerticalMenu ? 'hidden-md-up' : 'navbar-toggleable-sm'}" id="vertical-menu">
             <composite:insertChildren />
         </div>
     </composite:implementation>

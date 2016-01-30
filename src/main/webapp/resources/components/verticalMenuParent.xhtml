@@ -10,20 +10,15 @@
     <composite:interface>
         <composite:attribute name="navigateTo" />
         <composite:attribute name="label" required="true"/>
+        <composite:attribute name="includeViewParams" default="true" />
     </composite:interface>
 
     <composite:implementation>
         <li class="vertical-menu-parent">
-            <c:choose>
-            <c:when test="cc.attrs.navigateTo">
-                <h:link outcome="#{cc.attrs.navigateTo}">
-                    <h:outputText value="#{cc.attrs.label}" />
-                </h:link>
-            </c:when>
-            <c:otherwise>
-                <span><h:outputText value="#{cc.attrs.label}" /></span>
-            </c:otherwise>
-            </c:choose>
+            <h:link
+                    outcome="#{view.viewId != cc.attrs.navigateTo ? cc.attrs.navigateTo : ''}"
+                    includeViewParams="#{cc.attrs.includeViewParams}"
+                    value="#{cc.attrs.label}" />
             <composite:insertChildren />
         </li>
     </composite:implementation>

@@ -24,7 +24,10 @@ public class ThingSecurity {
     @Autowired
     private ThingManager thingManager;
 
-    public Thing findById(long thingId) {
+    public Thing findById(Long thingId) {
+        if (thingId == null) {
+            throw new NotFoundException();
+        }
         Thing thing = thingManager.findById(thingId);
         if (sessionBean.getCurrentUser() == null) {
             sessionBean.setDesired();

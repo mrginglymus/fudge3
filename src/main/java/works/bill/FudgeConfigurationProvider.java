@@ -25,6 +25,7 @@ public class FudgeConfigurationProvider extends HttpConfigurationProvider {
                 .addRule(Join.path("/").to("/index.xhtml"))
                 .addRule(Join.path("/thing/").to("/things.xhtml"))
                 .addRule(Join.path("/thing/{thingID}/").to("/thing.xhtml"))
+                .addRule(Join.path("/thing/{thingID}/overview/").to("/thing-overview.xhtml"))
                 .addRule(Join.path("/login/").to("/login.xhtml"))
                 .addRule(Join.path("/logout/").to("/logout.xhtml"))
                 .addRule(Join.path("/register/").to("/register.xhtml"))

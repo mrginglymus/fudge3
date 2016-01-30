@@ -4,8 +4,7 @@
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:ice="http://xmlns.jcp.org/jsf/composite/components"
       xmlns:f="http://xmlns.jcp.org/jsf/core"
-      xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:p="http://primefaces.org/ui">
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
 
 <ui:composition template="/templates/public.xhtml">
     <f:metadata>
@@ -16,21 +15,13 @@
 
     <ui:define name="content">
 
+        <h2><span class="fa fa-lock"> </span> Overview</h2>
 
-        <h2><span class="fa fa-lock"> </span> A Secret Thing</h2>
+        <p>Here is an overview of this thing.</p>
 
-        <blockquote><p>${thingBean.thing.secretText}</p></blockquote>
+        <p>There is not actually any additional content on here, it just tests the vertical menu.</p>
 
         <p><h:outputText value="#{thingBean.thing.count}" id="thingCount" /></p>
-
-        <p>
-            <p:commandButton
-                    action="#{thingBean.incrementThing}"
-                    update="thingCount"
-                    value="Increment"
-                    styleClass="btn btn-secondary"
-            />
-        </p>
 
     </ui:define>
 

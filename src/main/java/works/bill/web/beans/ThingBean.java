@@ -10,6 +10,7 @@ import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 import works.bill.entities.Thing;
 import works.bill.service.ThingManager;
+import works.bill.web.exceptions.NotFoundException;
 import works.bill.web.security.ThingSecurity;
 
 import java.util.List;
@@ -33,7 +34,7 @@ public class ThingBean {
     private Thing thing;
 
     public Thing getThing() {
-        if (thing == null && thingID != null) {
+        if (thing == null) {
             thing = thingSecurity.findById(thingID);
         }
         return thing;
