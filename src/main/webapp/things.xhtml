@@ -13,7 +13,7 @@
             <ul>
                 <ui:repeat value="#{thingBean.getThings()}" var="thing">
                     <li>
-                        <h:link outcome="thing" value="Secret thing belonging to me">
+                        <h:link outcome="thing" value="${thing.secretText}">
                             <f:param name="thingID" value="${thing.id}" />
                         </h:link>
                     </li>

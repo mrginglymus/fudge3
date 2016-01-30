@@ -23,22 +23,26 @@
 
     </ui:define>
 
-    <ui:param name="hasSidebar" value="true" />
+    <ui:param name="hasSidebar" value="${thingBean.getThings().size() > 1}" />
     <ui:define name="sidebar">
-        <ice:sidebar>
-            <div class="heading-container">
-                <h2 class="lite-heading">My things</h2>
-            </div>
-            <ul class="related-links">
-                <ui:repeat value="#{thingBean.getThings()}" var="thing">
-                    <li>
-                        <h:link outcome="thing" value="Secret thing belonging to me">
-                            <f:param name="thingID" value="${thing.id}" />
-                        </h:link>
-                    </li>
-                </ui:repeat>
-            </ul>
-        </ice:sidebar>
+        <ui:fragment rendered="${thingBean.getThings().size() > 1}">
+            <ice:sidebar>
+                <div class="heading-container">
+                    <h2 class="lite-heading">My Other Things</h2>
+                </div>
+                <ul class="related-links">
+                    <ui:repeat value="#{thingBean.getThings()}" var="thing">
+                        <ui:fragment rendered="${!thing.id.equals(thingBean.thingID)}">
+                            <li>
+                                <h:link outcome="thing" value="${thing.secretText}">
+                                    <f:param name="thingID" value="${thing.id}" />
+                                </h:link>
+                            </li>
+                        </ui:fragment>
+                    </ui:repeat>
+                </ul>
+            </ice:sidebar>
+        </ui:fragment>
     </ui:define>
 </ui:composition>
 </html>
