@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en" xml:lang="en"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:composite="http://xmlns.jcp.org/jsf/composite">
+
+<ui:component>
+
+    <composite:interface>
+        <composite:attribute name="menuRoot" required="true"/>
+        <composite:attribute name="label" required="true"/>
+        <composite:attribute name="pullRight" default="false" />
+    </composite:interface>
+
+    <composite:implementation>
+        <li class="nav-item #{cc.attrs.navigateTo == menuRoot ? 'active' : ''} #{cc.attrs.pullRight ? 'nav-item-right' : ''} dropdown">
+            <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown">
+                <h:outputText value="#{cc.attrs.label}" />
+            </a>
+            <ul class="dropdown-menu">
+                <composite:insertChildren />
+            </ul>
+        </li>
+    </composite:implementation>
+
+</ui:component>
+</html>

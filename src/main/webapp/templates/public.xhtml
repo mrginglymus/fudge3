@@ -16,7 +16,9 @@
                         <ice:horizontalNavLink label="Things" navigateTo="/things.xhtml" />
                         <c:choose>
                             <c:when test="#{sessionBean.isLoggedIn()}">
-                                <ice:horizontalNavLink label="Log Out" navigateTo="/logout.xhtml" pullRight="true" />
+                                <ice:horizontalNavParent label="My Account" pullRight="true">
+                                    <ice:horizontalNavChild label="Log Out" navigateTo="/logout.xhtml" />
+                                </ice:horizontalNavParent>
                             </c:when>
                             <c:otherwise>
                                 <ice:horizontalNavLink label="Log In" navigateTo="/login.xhtml" pullRight="true" />
