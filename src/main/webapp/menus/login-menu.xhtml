@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en" xml:lang="en"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:ice="http://xmlns.jcp.org/jsf/composite/components"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+<ui:composition>
+    <c:choose>
+        <c:when test="#{sessionBean.isLoggedIn()}">
+            <ice:verticalMenuSibling label="Log Out" navigateTo="/logout.xhtml" mobileOnly="true" />
+        </c:when>
+        <c:otherwise>
+            <ice:verticalMenuSibling label="Register" navigateTo="/register.xhtml" mobileOnly="true" />
+            <ice:verticalMenuSibling label="Log In" navigateTo="/login.xhtml" mobileOnly="true" />
+        </c:otherwise>
+    </c:choose>
+</ui:composition>
+</html>

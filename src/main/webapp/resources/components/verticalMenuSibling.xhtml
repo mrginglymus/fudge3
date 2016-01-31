@@ -11,11 +11,12 @@
     <composite:interface>
         <composite:attribute name="navigateTo" required="true"/>
         <composite:attribute name="label" required="true"/>
-        <composite:attribute name="includeViewParams" default="true" />
+        <composite:attribute name="includeViewParams" default="true" type="java.lang.Boolean" />
+        <composite:attribute name="mobileOnly" default="false" type="java.lang.Boolean" />
     </composite:interface>
 
     <composite:implementation>
-        <li>
+        <li class="#{cc.attrs.mobileOnly ? 'hidden-md-up':''}">
             <h:link
                     outcome="#{cc.attrs.navigateTo}"
                     value="#{cc.attrs.label}"

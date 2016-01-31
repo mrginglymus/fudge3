@@ -10,15 +10,7 @@
             <ice:verticalMenuAncestor label="Home" navigateTo="/index.xhtml" />
             <ice:verticalMenuSiblings>
                 <ice:verticalMenuSibling label="Things" navigateTo="/things.xhtml" />
-                <c:choose>
-                    <c:when test="#{sessionBean.isLoggedIn()}">
-                        <ice:verticalMenuSibling label="Log Out" navigateTo="/logout.xhtml" />
-                    </c:when>
-                    <c:otherwise>
-                        <ice:verticalMenuSibling label="Log In" navigateTo="/login.xhtml" />
-                        <ice:verticalMenuSibling label="Register" navigateTo="/register.xhtml"/>
-                    </c:otherwise>
-                </c:choose>
+                <ui:include src="/menus/login-menu.xhtml" />
             </ice:verticalMenuSiblings>
         </ice:verticalMenuAncestors>
     </ice:verticalMenu>
