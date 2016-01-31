@@ -6,9 +6,9 @@
       xmlns:ice="http://xmlns.jcp.org/jsf/composite/components">
 
 <ui:composition template="/templates/layout.xhtml">
+    <ui:define name="title">Log In</ui:define>
     <ui:define name="content">
         <ice:well>
-            <h2>Log in</h2>
             <ice:basicInput label="Email" inputId="username" width="9">
                 <p:inputText id="username" value="#{loginBean.username}" type="email" required="true" requiredMessage="Email address is required" />
             </ice:basicInput>
