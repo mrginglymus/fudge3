@@ -15,13 +15,16 @@ public class DateThingGroupSet extends AbstractSet<DateThingGroup> {
     private Map<DateThingGroupSetKey, DateThingGroup> m = new TreeMap<>();
 
     public void add(DatedThing datedThing) {
-        DateThingGroupSetKey key = getKey(datedThing);
-        m.putIfAbsent(key, new DateThingGroup(datedThing.getDate(), datedThing.getMyEnumSet()));
-        m.get(key).add(datedThing);
+        DateThingGroup grp = getOrCreate(getKey(datedThing));
+        grp.add(datedThing);
     }
 
     static private DateThingGroupSetKey getKey(DatedThing datedThing) {
         return new DateThingGroupSetKey(datedThing.getDate(), datedThing.getMyEnumSet());
+    }
+
+    private DateThingGroup getOrCreate(DateThingGroupSetKey key) {
+        return m.computeIfAbsent(key, DateThingGroup::new);
     }
 
     @Override
@@ -41,9 +44,17 @@ class DateThingGroupSetKey implements Comparable<DateThingGroupSetKey> {
 
     private EnumSet<MyEnum> myEnumSet;
 
-    public DateThingGroupSetKey(LocalDate date, EnumSet<MyEnum> myEnumSet) {
+    DateThingGroupSetKey(LocalDate date, EnumSet<MyEnum> myEnumSet) {
         this.date = date;
         this.myEnumSet = myEnumSet;
+    }
+
+    LocalDate getDate() {
+        return date;
+    }
+
+    EnumSet<MyEnum> getMyEnumSet() {
+        return myEnumSet;
     }
 
     @Override

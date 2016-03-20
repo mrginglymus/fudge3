@@ -21,6 +21,11 @@ public class DateThingGroup extends HashSet<DatedThing> implements Comparable<Da
         this.myEnumSet = myEnumSet;
     }
 
+    DateThingGroup(DateThingGroupSetKey key) {
+        this.date = key.getDate();
+        this.myEnumSet = key.getMyEnumSet();
+    }
+
     public LocalDate getDate() {
         return date;
     }

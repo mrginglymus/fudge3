@@ -34,6 +34,7 @@ public class SpinUpBean {
     public DateThingGroupSet getDatedThings() {
         DateThingGroupSet dateThingGroupSet = new DateThingGroupSet();
 
+        DatedThing thing6 = new DatedThing("Baz", LocalDate.now().minusDays(2), EnumSet.allOf(MyEnum.class));
         DatedThing thing1 = new DatedThing("Foo", LocalDate.now(), EnumSet.allOf(MyEnum.class));
         DatedThing thing5 = new DatedThing("Bar", LocalDate.now(), EnumSet.allOf(MyEnum.class));
         DatedThing thing2= new DatedThing("Woo", LocalDate.now(), EnumSet.of(MyEnum.FIRST, MyEnum.SECOND));
@@ -45,6 +46,7 @@ public class SpinUpBean {
         dateThingGroupSet.add(thing3);
         dateThingGroupSet.add(thing4);
         dateThingGroupSet.add(thing5);
+        dateThingGroupSet.add(thing6);
 
         return dateThingGroupSet;
     }
