@@ -26,6 +26,21 @@
 
         <p><h:commandButton action="#{messageBean.messages}" value="Messages" styleClass="btn btn-primary" /></p>
 
+        <p>Testing</p>
+
+        <ul>
+            <ui:repeat value="#{spinUpBean.datedThings.toArray()}" var="datedThingGroup">
+                <li>#{datedThingGroup.date}, #{datedThingGroup.myEnumSet}
+                    <ul>
+                        <ui:repeat value="#{datedThingGroup.toArray()}" var="datedThing">
+                            <li>#{datedThing.text}</li>
+                        </ui:repeat>
+                    </ul>
+                </li>
+
+            </ui:repeat>
+        </ul>
+
     </ui:define>
 
     <ui:param name="hasHiddenVerticalMenu" value="true" />
