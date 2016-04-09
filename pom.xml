@@ -33,9 +33,16 @@
 	</repositories>
 
 	<dependencies>
+
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-data-jpa</artifactId>
+			<exclusions>
+				<exclusion>
+					<groupId>xml-apis</groupId>
+					<artifactId>xml-apis</artifactId>
+				</exclusion>
+			</exclusions>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -58,7 +65,6 @@
 		<dependency>
 			<groupId>com.h2database</groupId>
 			<artifactId>h2</artifactId>
-			<scope>runtime</scope>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -78,14 +84,12 @@
 			<groupId>com.sun.faces</groupId>
 			<artifactId>jsf-api</artifactId>
 			<version>2.2.12</version>
-			<scope>compile</scope>
 		</dependency>
 
 		<dependency>
 			<groupId>com.sun.faces</groupId>
 			<artifactId>jsf-impl</artifactId>
 			<version>2.2.12</version>
-			<scope>compile</scope>
 		</dependency>
 
 		<dependency>
@@ -114,6 +118,16 @@
 			<artifactId>rewrite-servlet</artifactId>
 			<version>2.0.12.Final</version>
 		</dependency>
+
+		<dependency>
+			<groupId>org.seleniumhq.selenium</groupId>
+			<artifactId>selenium-java</artifactId>
+			<version>2.49.1</version>
+		</dependency>
+
+
+
+
 
 	</dependencies>
 
