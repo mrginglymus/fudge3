@@ -6,7 +6,7 @@
 	<groupId>works.bill</groupId>
 	<artifactId>fudge3</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<packaging>jar</packaging>
+	<packaging>war</packaging>
 
 	<name>fudge3</name>
 	<description>Demo project for Spring Boot</description>
