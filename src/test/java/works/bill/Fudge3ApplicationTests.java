@@ -2,38 +2,26 @@ package works.bill;
 
 import org.junit.After;
 import org.junit.Before;
-import org.junit.Ignore;
 import org.junit.Test;
-import org.junit.runner.RunWith;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.htmlunit.HtmlUnitDriver;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.boot.test.IntegrationTest;
-import org.springframework.boot.test.SpringApplicationConfiguration;
-import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
-import org.springframework.test.context.web.WebAppConfiguration;
-import org.springframework.web.context.WebApplicationContext;
-import works.bill.web.beans.SessionBean;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
-@RunWith(SpringJUnit4ClassRunner.class)
-@SpringApplicationConfiguration(classes = Fudge3Application.class)
-@WebAppConfiguration
-@IntegrationTest("server.port:0")
-@Ignore
+import static org.junit.Assert.assertEquals;
+
 public class Fudge3ApplicationTests {
 
 	private WebDriver driver;
 
-	@Value("${local.server.port}")
-	private int serverPort;
+	private WebDriverWait wait;
 
-	@Autowired
-	private WebApplicationContext webApplicationContext;
+	private String baseUrl = "http://web:8080/fudge3-0.0.1-SNAPSHOT/";
 
 	@Before
 	public void spinUp() {
 		driver = new HtmlUnitDriver();
+		wait = new WebDriverWait(driver, 60);
 	}
 
 	@After
@@ -42,11 +30,9 @@ public class Fudge3ApplicationTests {
 	}
 
 	@Test
-	public void myTest() {
-		driver.get("http://localhost:" + serverPort);
-		System.out.println(driver.getTitle());
-		SessionBean sessionBean = webApplicationContext.getBean(SessionBean.class);
-		System.out.println(sessionBean.isLoggedIn());
+	public void testTitle() throws Exception {
+		driver.get(baseUrl);
+		assertEquals("ICE", driver.findElement(By.cssSelector(".subtitle h1")).getText());
 	}
 
 }
