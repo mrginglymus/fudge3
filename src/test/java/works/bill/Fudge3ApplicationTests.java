@@ -2,6 +2,7 @@ package works.bill;
 
 import org.junit.After;
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.openqa.selenium.WebDriver;
@@ -19,6 +20,7 @@ import works.bill.web.beans.SessionBean;
 @SpringApplicationConfiguration(classes = Fudge3Application.class)
 @WebAppConfiguration
 @IntegrationTest("server.port:0")
+@Ignore
 public class Fudge3ApplicationTests {
 
 	private WebDriver driver;
