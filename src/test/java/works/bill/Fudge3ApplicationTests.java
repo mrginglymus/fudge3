@@ -5,12 +5,20 @@ import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.htmlunit.HtmlUnitDriver;
+import org.openqa.selenium.remote.DesiredCapabilities;
+import org.openqa.selenium.remote.RemoteWebDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
+
+import java.net.MalformedURLException;
+import java.net.URL;
 
 import static org.junit.Assert.assertEquals;
 
 public class Fudge3ApplicationTests {
+
+	private static final String USERNAME = "bilbocollins";
+	private static final String ACCESS_KEY = "6bcb2f57-3859-4b87-91a8-22582dfb2d41";
+	private static final String SAUCELABS_URL = "http://" + USERNAME + ":" + ACCESS_KEY + "@ondemand.saucelabs.com:80/wd/hub";
 
 	private WebDriver driver;
 
@@ -19,9 +27,12 @@ public class Fudge3ApplicationTests {
 	private String baseUrl = "http://localhost:8080/fudge3-0.0.1-SNAPSHOT/";
 
 	@Before
-	public void spinUp() {
-		driver = new HtmlUnitDriver();
-		wait = new WebDriverWait(driver, 60);
+	public void spinUp() throws MalformedURLException {
+		DesiredCapabilities caps = DesiredCapabilities.chrome();
+		caps.setCapability("platform", "Windows 10");
+		caps.setCapability("version", "48.0");
+
+		driver = new RemoteWebDriver(new URL(SAUCELABS_URL), caps);
 	}
 
 	@After

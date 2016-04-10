@@ -10,5 +10,7 @@ services:
 script:
   - mvn package docker:build -DskipTests
   - docker-compose up -d
-  - sleep 60
+  - sleep 30
   - mvn test
+addons:
+  sauce_connect: true
