@@ -31,6 +31,7 @@ public class Fudge3ApplicationTests {
 
 	@Test
 	public void testTitle() throws Exception {
+		driver.get("http://loclahost:8080/");
 		System.out.println("********************************");
 		System.out.println(driver.getTitle());
 		System.out.println("********************************");
