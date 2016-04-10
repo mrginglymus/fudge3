@@ -15,22 +15,23 @@
     <meta http-equiv="X-UA-Compatible" content="IE=Edge"/>
 
     <meta name="description" content="The University of Cambridge: ICE"/>
-    <meta name="author" content=""/>
+    <meta name="author" content=""
+    />
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 
-    <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
-    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="shortcut icon" type="image/x-icon" href="#{request.contextPath}/favicon.ico" />
+    <link rel="apple-touch-icon" href="#{request.contextPath}/apple-touch-icon.png" />
 
     <h:outputScript library="primefaces" name="jquery/jquery.js"/>
-    <script type="text/javascript" src="/js/lib.min.js"></script>
-    <script type="text/javascript" src="/js/modernizr.min.js"></script>
-    <script type="text/javascript" src="/js/campl.min.js"></script>
+    <script type="text/javascript" src="#{request.contextPath}/js/lib.min.js"></script>
+    <script type="text/javascript" src="#{request.contextPath}/js/modernizr.min.js"></script>
+    <script type="text/javascript" src="#{request.contextPath}/js/campl.min.js"></script>
     <h:outputText escape="false" value="&lt;!--[if lte IE 9]&gt;" />
-    <link rel="stylesheet" href="/css/campl_legacy.min.css" />
+    <link rel="stylesheet" href="#{request.contextPath}/css/campl_legacy.min.css" />
     <h:outputText escape="false" value="&lt;![endif]--&gt;" />
 
     <h:outputText escape="false" value="&lt;!--[if gte IE 10]&gt;;&lt;!--&gt;" />
-    <link rel="stylesheet" href="/css/campl.min.css" />
+    <link rel="stylesheet" href="#{request.contextPath}/css/campl.min.css" />
     <h:outputText escape="false" value="&lt;!--&lt;![endif]--&gt;" />
 
     <script type="text/javascript" src="https://use.typekit.com/hyb5bko.js"></script>
