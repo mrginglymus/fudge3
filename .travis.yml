@@ -7,6 +7,6 @@ cache:
 sudo: required
 services:
   - docker
-after-success:
+after_success:
   - mvn package docker:build
   - docker-compose up
