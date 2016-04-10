@@ -4,3 +4,6 @@ jdk:
 sudo: required
 services:
   - docker
+after-success:
+  - mvn package docker:build
+  - docker-compose up
