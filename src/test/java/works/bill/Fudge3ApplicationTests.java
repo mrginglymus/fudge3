@@ -32,7 +32,7 @@ public class Fudge3ApplicationTests {
 	@Test
 	public void testTitle() throws Exception {
 		driver.get(baseUrl);
-		System.out.println(driver.findElement(By.cssSelector("h1")));
+		System.out.println(driver.getTitle());
 		assertEquals("ICE", driver.findElement(By.cssSelector(".subtitle h1")).getText());
 	}
 
